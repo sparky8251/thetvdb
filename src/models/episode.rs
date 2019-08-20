@@ -47,12 +47,12 @@ pub struct Episode {
     #[serde(rename = "lastUpdated")]
     last_updated: Option<i32>,
     #[serde(rename = "lastUpdatedBy")]
-    last_updated_by: Option<String>,
+    last_updated_by: Option<i32>,
     overview: Option<String>,
     #[serde(rename = "productionCode")]
     production_code: Option<String>,
     #[serde(rename = "seriesId")]
-    series_id: Option<String>,
+    series_id: Option<i32>,
     #[serde(rename = "showUrl")]
     show_url: Option<String>,
     #[serde(rename = "siteRating")]
@@ -394,17 +394,17 @@ impl Episode {
         self.last_updated = None;
     }
 
-    pub fn set_last_updated_by(&mut self, last_updated_by: String) {
+    pub fn set_last_updated_by(&mut self, last_updated_by: i32) {
         self.last_updated_by = Some(last_updated_by);
     }
 
-    pub fn with_last_updated_by(mut self, last_updated_by: String) -> Episode {
+    pub fn with_last_updated_by(mut self, last_updated_by: i32) -> Episode {
         self.last_updated_by = Some(last_updated_by);
         self
     }
 
-    pub fn last_updated_by(&self) -> Option<&String> {
-        self.last_updated_by.as_ref()
+    pub fn last_updated_by(&self) -> Option<i32> {
+        self.last_updated_by
     }
 
     pub fn reset_last_updated_by(&mut self) {
@@ -445,17 +445,17 @@ impl Episode {
         self.production_code = None;
     }
 
-    pub fn set_series_id(&mut self, series_id: String) {
+    pub fn set_series_id(&mut self, series_id: i32) {
         self.series_id = Some(series_id);
     }
 
-    pub fn with_series_id(mut self, series_id: String) -> Episode {
+    pub fn with_series_id(mut self, series_id: i32) -> Episode {
         self.series_id = Some(series_id);
         self
     }
 
-    pub fn series_id(&self) -> Option<&String> {
-        self.series_id.as_ref()
+    pub fn series_id(&self) -> Option<i32> {
+        self.series_id
     }
 
     pub fn reset_series_id(&mut self) {

@@ -50,8 +50,8 @@ impl<T> From<serde_json::Error> for Error<T> {
 
 mod authentication_api;
 pub use self::authentication_api::{AuthenticationApi, AuthenticationApiClient};
-// mod episodes_api;
-// pub use self::episodes_api::{EpisodesApi, EpisodesApiClient};
+mod episodes_api;
+pub use self::episodes_api::{EpisodesApi, EpisodesApiClient};
 // mod languages_api;
 // pub use self::languages_api::{LanguagesApi, LanguagesApiClient};
 // mod search_api;

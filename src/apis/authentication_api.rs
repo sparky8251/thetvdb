@@ -95,7 +95,7 @@ impl<C: 'static + hyper::client::connect::Connect> AuthenticationApi
                 let p = v.prefix.clone();
                 let t = v.token.clone();
                 format!("{} {}", p, t)
-            },
+            }
             None => {
                 panic!("You need to provide an authorization token before making this API call")
             }

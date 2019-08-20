@@ -6,7 +6,7 @@ use hyper;
 pub struct APIClient<C: hyper::client::connect::Connect> {
     configuration: Rc<Configuration<C>>,
     authentication_api: Box<dyn crate::apis::AuthenticationApi>,
-    // episodes_api: Box<dyn crate::apis::EpisodesApi>,
+    episodes_api: Box<dyn crate::apis::EpisodesApi>,
     // languages_api: Box<dyn crate::apis::LanguagesApi>,
     // search_api: Box<dyn crate::apis::SearchApi>,
     // series_api: Box<dyn crate::apis::SeriesApi>,
@@ -21,7 +21,7 @@ impl<C: 'static + hyper::client::connect::Connect> APIClient<C> {
         APIClient {
             configuration: rc.clone(),
             authentication_api: Box::new(crate::apis::AuthenticationApiClient::new(rc.clone())),
-            // episodes_api: Box::new(crate::apis::EpisodesApiClient::new(rc.clone())),
+            episodes_api: Box::new(crate::apis::EpisodesApiClient::new(rc.clone())),
             // languages_api: Box::new(crate::apis::LanguagesApiClient::new(rc.clone())),
             // search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
             // series_api: Box::new(crate::apis::SeriesApiClient::new(rc.clone())),
@@ -34,10 +34,10 @@ impl<C: 'static + hyper::client::connect::Connect> APIClient<C> {
         self.authentication_api.as_ref()
     }
 
-    // pub fn episodes_api(&self) -> &dyn crate::apis::EpisodesApi {
-    //     self.episodes_api.as_ref()
-    // }
-    //
+    pub fn episodes_api(&self) -> &dyn crate::apis::EpisodesApi {
+        self.episodes_api.as_ref()
+    }
+
     // pub fn languages_api(&self) -> &dyn crate::apis::LanguagesApi {
     //     self.languages_api.as_ref()
     // }
