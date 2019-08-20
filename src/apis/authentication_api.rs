@@ -91,7 +91,11 @@ impl<C: 'static + hyper::client::connect::Connect> AuthenticationApi
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let authorization = match &configuration.token {
-            Some(v) => v.token.clone(),
+            Some(v) => {
+                let p = v.prefix.clone();
+                let t = v.token.clone();
+                format!("{} {}", p, t)
+            },
             None => {
                 panic!("You need to provide an authorization token before making this API call")
             }
@@ -103,7 +107,7 @@ impl<C: 'static + hyper::client::connect::Connect> AuthenticationApi
                 configuration.user_agent.as_ref().unwrap(),
             )
             .header(hyper::header::ACCEPT, "application/json")
-            .header(hyper::header::AUTHORIZATION, format!("{} {}", "Bearer", authorization))
+            .header(hyper::header::AUTHORIZATION, authorization)
             .body(Body::empty())
             .expect("request builder");
 

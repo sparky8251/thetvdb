@@ -41,7 +41,7 @@ fn refresh_token() {
     let authentication_client = apiclient.authentication_api().login_post(apikey);
 
     let token = match authentication_client.wait() {
-        Ok(v) => thetvdb::apis::configuration::ApiToken { token: v.token().unwrap().to_string() },
+        Ok(v) => thetvdb::apis::configuration::ApiToken { prefix: "Bearer".to_string(), token: v.token().unwrap().to_string() },
         Err(e) => panic!("{:?}", e),
     };
 

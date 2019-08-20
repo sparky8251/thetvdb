@@ -18,6 +18,8 @@ pub struct Configuration<C: hyper::client::connect::Connect> {
 }
 
 pub struct ApiToken {
+    // TODO: Default prefix to 'Bearer' for ergonomics
+    pub prefix: String,
     pub token: String,
 }
 
