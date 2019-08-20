@@ -20,6 +20,8 @@ mod language;
 pub use self::language::Language;
 mod language_data;
 pub use self::language_data::LanguageData;
+mod language_data_single;
+pub use self::language_data_single::LanguageDataSingle;
 mod links;
 pub use self::links::Links;
 mod not_authorized;
