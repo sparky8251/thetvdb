@@ -38,7 +38,7 @@ fn episodes_id() {
 
     let results = match apiclient
         .episodes_api()
-        .episodes_id_get(184603, "en")
+        .episodes_id_get(184_603, "en")
         .wait()
     {
         Ok(v) => v,
@@ -46,9 +46,9 @@ fn episodes_id() {
     };
 
     let results = match results.data() {
-        Some(v) => v.clone(),
+        Some(v) => v.episode_name().unwrap(),
         None => panic!("No data!"),
     };
 
-    assert_eq!("My Mentor", results.episode_name().unwrap().as_str())
+    assert_eq!("My Mentor", results.as_str())
 }

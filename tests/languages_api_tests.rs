@@ -42,11 +42,11 @@ fn languages() {
     };
 
     let results = match results.data() {
-        Some(v) => v.clone(),
+        Some(v) => v[1].abbreviation().unwrap(),
         None => panic!("No data!"),
     };
 
-    assert_eq!("sv", results[1].abbreviation().unwrap().as_str())
+    assert_eq!("sv", results.as_str())
 }
 
 #[test]
@@ -89,9 +89,9 @@ fn languages_id() {
     };
 
     let results = match results.data() {
-        Some(v) => v.clone(),
+        Some(v) => v.abbreviation().unwrap(),
         None => panic!("No data!"),
     };
 
-    assert_eq!("de", results.abbreviation().unwrap().as_str())
+    assert_eq!("de", results.as_str())
 }
