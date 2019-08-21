@@ -1,25 +1,26 @@
-use serde::{Deserialize, Serialize};
+use std::fmt::{Display, Formatter, Result};
 
-#[derive(Debug, Default, Serialize, Deserialize)]
+#[derive(Debug)]
 pub struct UpdateDataQueryParams {
-    data: Option<Vec<String>>,
+    from_time: String,
+    to_time: Option<String>,
 }
 
 impl UpdateDataQueryParams {
-    pub fn set_data(&mut self, data: Vec<String>) {
-        self.data = Some(data);
+    pub fn new(from_time: String, to_time: Option<String>) -> Self {
+        // TODO: Implement bounds check on to_time such that it
+        // is at no more than 7 days after from_time as specified
+        // in the API spec and then return a Result<Self, Error>
+        // to make this apparent to API consumers
+        UpdateDataQueryParams { from_time, to_time }
     }
+}
 
-    pub fn with_data(mut self, data: Vec<String>) -> UpdateDataQueryParams {
-        self.data = Some(data);
-        self
-    }
-
-    pub fn data(&self) -> Option<&Vec<String>> {
-        self.data.as_ref()
-    }
-
-    pub fn reset_data(&mut self) {
-        self.data = None;
+impl Display for UpdateDataQueryParams {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        match &self.to_time {
+            Some(v) => write!(f, "?fromTime={}&toTime={}", self.from_time, v),
+            None => write!(f, "?fromTime={}", self.from_time),
+        }
     }
 }
