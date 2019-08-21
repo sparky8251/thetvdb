@@ -23,11 +23,6 @@ pub trait SearchApi {
         search: crate::models::SeriesSearchQueryParams,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::SeriesSearchResults, Error = Error<serde_json::Value>>>;
-    fn search_series_params_get(
-        &self,
-    ) -> Box<
-        dyn Future<Item = crate::models::EpisodeDataQueryParams, Error = Error<serde_json::Value>>,
-    >;
 }
 
 impl<C: 'static + hyper::client::connect::Connect> SearchApi for SearchApiClient<C> {
@@ -50,13 +45,14 @@ impl<C: 'static + hyper::client::connect::Connect> SearchApi for SearchApiClient
             }
         };
 
-        let req = Request::get(format!("{}/languages", configuration.base_path))
+        let req = Request::get(format!("{}/search/series{}", configuration.base_path, search))
             .header(
                 hyper::header::USER_AGENT,
                 configuration.user_agent.as_ref().unwrap(),
             )
             .header(hyper::header::ACCEPT, "application/json")
             .header(hyper::header::AUTHORIZATION, authorization)
+            .header("Accept-Language", accept_language)
             .body(Body::empty())
             .expect("request builder");
 
@@ -82,62 +78,6 @@ impl<C: 'static + hyper::client::connect::Connect> SearchApi for SearchApiClient
                 })
                 .and_then(|body| {
                     let parsed: Result<crate::models::SeriesSearchResults, _> =
-                        serde_json::from_slice(&body);
-                    parsed.map_err(Error::from)
-                }),
-        )
-    }
-
-    fn search_series_params_get(
-        &self,
-    ) -> Box<
-        dyn Future<Item = crate::models::EpisodeDataQueryParams, Error = Error<serde_json::Value>>,
-    > {
-        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
-
-        let authorization = match &configuration.token {
-            Some(v) => {
-                let p = v.prefix.clone();
-                let t = v.token.clone();
-                format!("{} {}", p, t)
-            }
-            None => {
-                panic!("You need to provide an authorization token before making this API call")
-            }
-        };
-
-        let req = Request::get(format!("{}/languages", configuration.base_path))
-            .header(
-                hyper::header::USER_AGENT,
-                configuration.user_agent.as_ref().unwrap(),
-            )
-            .header(hyper::header::ACCEPT, "application/json")
-            .header(hyper::header::AUTHORIZATION, authorization)
-            .body(Body::empty())
-            .expect("request builder");
-
-        // send request
-        Box::new(
-            configuration
-                .client
-                .request(req)
-                .map_err(Error::from)
-                .and_then(|resp| {
-                    let status = resp.status();
-                    resp.into_body()
-                        .concat2()
-                        .and_then(move |body| Ok((status, body)))
-                        .map_err(Error::from)
-                })
-                .and_then(|(status, body)| {
-                    if status.is_success() {
-                        Ok(body)
-                    } else {
-                        Err(Error::from((status, &*body)))
-                    }
-                })
-                .and_then(|body| {
-                    let parsed: Result<crate::models::EpisodeDataQueryParams, _> =
                         serde_json::from_slice(&body);
                     parsed.map_err(Error::from)
                 }),

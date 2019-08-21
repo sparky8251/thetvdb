@@ -6,8 +6,6 @@ mod conflict;
 pub use self::conflict::Conflict;
 mod episode;
 pub use self::episode::Episode;
-mod episode_data_query_params;
-pub use self::episode_data_query_params::EpisodeDataQueryParams;
 mod episode_language_info;
 pub use self::episode_language_info::EpisodeLanguageInfo;
 mod episode_record_data;
