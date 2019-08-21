@@ -58,8 +58,8 @@ mod search_api;
 pub use self::search_api::{SearchApi, SearchApiClient};
 // mod series_api;
 // pub use self::series_api::{SeriesApi, SeriesApiClient};
-// mod updates_api;
-// pub use self::updates_api::{UpdatesApi, UpdatesApiClient};
+mod updates_api;
+pub use self::updates_api::{UpdatesApi, UpdatesApiClient};
 // mod users_api;
 // pub use self::users_api::{UsersApi, UsersApiClient};
 

@@ -38,7 +38,10 @@ fn search_series_name() {
 
     let results = match apiclient
         .search_api()
-        .search_series_get(thetvdb::models::SeriesSearchQueryParams::Name("scrubs".to_string()), "en")
+        .search_series_get(
+            thetvdb::models::SeriesSearchQueryParams::Name("scrubs".to_string()),
+            "en",
+        )
         .wait()
     {
         Ok(v) => v,
@@ -89,7 +92,10 @@ fn search_series_imdbid() {
 
     let results = match apiclient
         .search_api()
-        .search_series_get(thetvdb::models::SeriesSearchQueryParams::ImdbId("tt0285403".to_string()), "en")
+        .search_series_get(
+            thetvdb::models::SeriesSearchQueryParams::ImdbId("tt0285403".to_string()),
+            "en",
+        )
         .wait()
     {
         Ok(v) => v,
@@ -140,7 +146,10 @@ fn search_series_zap2itid() {
 
     let results = match apiclient
         .search_api()
-        .search_series_get(thetvdb::models::SeriesSearchQueryParams::Zap2ItId("EP00446160".to_string()), "en")
+        .search_series_get(
+            thetvdb::models::SeriesSearchQueryParams::Zap2ItId("EP00446160".to_string()),
+            "en",
+        )
         .wait()
     {
         Ok(v) => v,
@@ -191,7 +200,10 @@ fn search_series_slug() {
 
     let results = match apiclient
         .search_api()
-        .search_series_get(thetvdb::models::SeriesSearchQueryParams::Slug("scrubs".to_string()), "en")
+        .search_series_get(
+            thetvdb::models::SeriesSearchQueryParams::Slug("scrubs".to_string()),
+            "en",
+        )
         .wait()
     {
         Ok(v) => v,

@@ -45,16 +45,19 @@ impl<C: 'static + hyper::client::connect::Connect> SearchApi for SearchApiClient
             }
         };
 
-        let req = Request::get(format!("{}/search/series{}", configuration.base_path, search))
-            .header(
-                hyper::header::USER_AGENT,
-                configuration.user_agent.as_ref().unwrap(),
-            )
-            .header(hyper::header::ACCEPT, "application/json")
-            .header(hyper::header::AUTHORIZATION, authorization)
-            .header("Accept-Language", accept_language)
-            .body(Body::empty())
-            .expect("request builder");
+        let req = Request::get(format!(
+            "{}/search/series{}",
+            configuration.base_path, search
+        ))
+        .header(
+            hyper::header::USER_AGENT,
+            configuration.user_agent.as_ref().unwrap(),
+        )
+        .header(hyper::header::ACCEPT, "application/json")
+        .header(hyper::header::AUTHORIZATION, authorization)
+        .header("Accept-Language", accept_language)
+        .body(Body::empty())
+        .expect("request builder");
 
         // send request
         Box::new(
