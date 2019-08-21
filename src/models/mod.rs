@@ -58,6 +58,8 @@ mod series_images_query_param;
 pub use self::series_images_query_param::SeriesImagesQueryParam;
 mod series_images_query_params;
 pub use self::series_images_query_params::SeriesImagesQueryParams;
+mod series_search_query_params;
+pub use self::series_search_query_params::SeriesSearchQueryParams;
 mod series_search_result;
 pub use self::series_search_result::SeriesSearchResult;
 mod series_search_results;
