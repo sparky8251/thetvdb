@@ -2,33 +2,33 @@ use serde::{self, Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct SeriesActorsData {
-    id: Option<i64>,
+    id: Option<u64>,
     image: Option<String>,
     #[serde(rename = "imageAdded")]
     image_added: Option<String>,
     #[serde(rename = "imageAuthor")]
-    image_author: Option<i64>,
+    image_author: Option<u64>,
     #[serde(rename = "lastUpdated")]
     last_updated: Option<String>,
     name: Option<String>,
     role: Option<String>,
     #[serde(rename = "seriesId")]
-    series_id: Option<i64>,
+    series_id: Option<u64>,
     #[serde(rename = "sortOrder")]
-    sort_order: Option<i64>,
+    sort_order: Option<u64>,
 }
 
 impl SeriesActorsData {
-    pub fn set_id(&mut self, id: i64) {
+    pub fn set_id(&mut self, id: u64) {
         self.id = Some(id);
     }
 
-    pub fn with_id(mut self, id: i64) -> SeriesActorsData {
+    pub fn with_id(mut self, id: u64) -> SeriesActorsData {
         self.id = Some(id);
         self
     }
 
-    pub fn id(&self) -> Option<&i64> {
+    pub fn id(&self) -> Option<&u64> {
         self.id.as_ref()
     }
 
@@ -70,16 +70,16 @@ impl SeriesActorsData {
         self.image_added = None;
     }
 
-    pub fn set_image_author(&mut self, image_author: i64) {
+    pub fn set_image_author(&mut self, image_author: u64) {
         self.image_author = Some(image_author);
     }
 
-    pub fn with_image_author(mut self, image_author: i64) -> SeriesActorsData {
+    pub fn with_image_author(mut self, image_author: u64) -> SeriesActorsData {
         self.image_author = Some(image_author);
         self
     }
 
-    pub fn image_author(&self) -> Option<&i64> {
+    pub fn image_author(&self) -> Option<&u64> {
         self.image_author.as_ref()
     }
 
@@ -138,16 +138,16 @@ impl SeriesActorsData {
         self.role = None;
     }
 
-    pub fn set_series_id(&mut self, series_id: i64) {
+    pub fn set_series_id(&mut self, series_id: u64) {
         self.series_id = Some(series_id);
     }
 
-    pub fn with_series_id(mut self, series_id: i64) -> SeriesActorsData {
+    pub fn with_series_id(mut self, series_id: u64) -> SeriesActorsData {
         self.series_id = Some(series_id);
         self
     }
 
-    pub fn series_id(&self) -> Option<&i64> {
+    pub fn series_id(&self) -> Option<&u64> {
         self.series_id.as_ref()
     }
 
@@ -155,16 +155,16 @@ impl SeriesActorsData {
         self.series_id = None;
     }
 
-    pub fn set_sort_order(&mut self, sort_order: i64) {
+    pub fn set_sort_order(&mut self, sort_order: u64) {
         self.sort_order = Some(sort_order);
     }
 
-    pub fn with_sort_order(mut self, sort_order: i64) -> SeriesActorsData {
+    pub fn with_sort_order(mut self, sort_order: u64) -> SeriesActorsData {
         self.sort_order = Some(sort_order);
         self
     }
 
-    pub fn sort_order(&self) -> Option<&i64> {
+    pub fn sort_order(&self) -> Option<&u64> {
         self.sort_order.as_ref()
     }
 

@@ -20,7 +20,7 @@ impl<C: hyper::client::connect::Connect> EpisodesApiClient<C> {
 pub trait EpisodesApi {
     fn episodes_id_get(
         &self,
-        id: i64,
+        id: u64,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::EpisodeRecordData, Error = Error<serde_json::Value>>>;
 }
@@ -28,7 +28,7 @@ pub trait EpisodesApi {
 impl<C: 'static + hyper::client::connect::Connect> EpisodesApi for EpisodesApiClient<C> {
     fn episodes_id_get(
         &self,
-        id: i64,
+        id: u64,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::EpisodeRecordData, Error = Error<serde_json::Value>>>
     {

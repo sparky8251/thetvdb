@@ -23,7 +23,7 @@ pub trait LanguagesApi {
     ) -> Box<dyn Future<Item = crate::models::LanguageData, Error = Error<serde_json::Value>>>;
     fn languages_id_get(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::LanguageDataSingle, Error = Error<serde_json::Value>>>;
 }
 
@@ -80,7 +80,7 @@ impl<C: 'static + hyper::client::connect::Connect> LanguagesApi for LanguagesApi
 
     fn languages_id_get(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::LanguageDataSingle, Error = Error<serde_json::Value>>>
     {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();

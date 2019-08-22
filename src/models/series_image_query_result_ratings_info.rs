@@ -5,7 +5,7 @@ pub struct SeriesImageQueryResultRatingsInfo {
     /// Average rating for the given record.
     average: Option<f64>,
     /// Number of ratings for the given record.
-    count: Option<i64>,
+    count: Option<u64>,
 }
 
 impl SeriesImageQueryResultRatingsInfo {
@@ -26,16 +26,16 @@ impl SeriesImageQueryResultRatingsInfo {
         self.average = None;
     }
 
-    pub fn set_count(&mut self, count: i64) {
+    pub fn set_count(&mut self, count: u64) {
         self.count = Some(count);
     }
 
-    pub fn with_count(mut self, count: i64) -> SeriesImageQueryResultRatingsInfo {
+    pub fn with_count(mut self, count: u64) -> SeriesImageQueryResultRatingsInfo {
         self.count = Some(count);
         self
     }
 
-    pub fn count(&self) -> Option<&i64> {
+    pub fn count(&self) -> Option<&u64> {
         self.count.as_ref()
     }
 

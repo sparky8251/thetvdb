@@ -38,7 +38,7 @@ fn updates() {
     let results = match apiclient
         .updates_api()
         .updated_query_get(
-            thetvdb::models::UpdateDataQueryParams::new(1566259200, Some(1566950400)),
+            thetvdb::models::UpdateDataQueryParams::new(1_566_259_200, Some(1_566_950_400)),
             "en",
         )
         .wait()

@@ -4,11 +4,11 @@ use serde::{self, Deserialize, Serialize};
 pub struct SeriesImageQueryResult {
     #[serde(rename = "fileName")]
     file_name: Option<String>,
-    id: Option<i64>,
+    id: Option<u64>,
     #[serde(rename = "keyType")]
     key_type: Option<String>,
     #[serde(rename = "languageId")]
-    language_id: Option<i64>,
+    language_id: Option<u64>,
     #[serde(rename = "ratingsInfo")]
     ratings_info: Option<crate::models::SeriesImageQueryResultRatingsInfo>,
     resolution: Option<String>,
@@ -34,16 +34,16 @@ impl SeriesImageQueryResult {
         self.file_name = None;
     }
 
-    pub fn set_id(&mut self, id: i64) {
+    pub fn set_id(&mut self, id: u64) {
         self.id = Some(id);
     }
 
-    pub fn with_id(mut self, id: i64) -> SeriesImageQueryResult {
+    pub fn with_id(mut self, id: u64) -> SeriesImageQueryResult {
         self.id = Some(id);
         self
     }
 
-    pub fn id(&self) -> Option<&i64> {
+    pub fn id(&self) -> Option<&u64> {
         self.id.as_ref()
     }
 
@@ -68,16 +68,16 @@ impl SeriesImageQueryResult {
         self.key_type = None;
     }
 
-    pub fn set_language_id(&mut self, language_id: i64) {
+    pub fn set_language_id(&mut self, language_id: u64) {
         self.language_id = Some(language_id);
     }
 
-    pub fn with_language_id(mut self, language_id: i64) -> SeriesImageQueryResult {
+    pub fn with_language_id(mut self, language_id: u64) -> SeriesImageQueryResult {
         self.language_id = Some(language_id);
         self
     }
 
-    pub fn language_id(&self) -> Option<&i64> {
+    pub fn language_id(&self) -> Option<&u64> {
         self.language_id.as_ref()
     }
 

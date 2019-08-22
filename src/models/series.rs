@@ -12,11 +12,11 @@ pub struct Series {
     #[serde(rename = "firstAired")]
     first_aired: Option<String>,
     genre: Option<Vec<String>>,
-    id: Option<i64>,
+    id: Option<u64>,
     #[serde(rename = "imdbId")]
     imdb_id: Option<String>,
     #[serde(rename = "lastUpdated")]
-    last_updated: Option<i64>,
+    last_updated: Option<u64>,
     network: Option<String>,
     #[serde(rename = "networkId")]
     network_id: Option<String>,
@@ -30,7 +30,7 @@ pub struct Series {
     #[serde(rename = "siteRating")]
     site_rating: Option<f64>,
     #[serde(rename = "siteRatingCount")]
-    site_rating_count: Option<i64>,
+    site_rating_count: Option<u64>,
     slug: Option<String>,
     status: Option<String>,
     #[serde(rename = "zap2itId")]
@@ -157,16 +157,16 @@ impl Series {
         self.genre = None;
     }
 
-    pub fn set_id(&mut self, id: i64) {
+    pub fn set_id(&mut self, id: u64) {
         self.id = Some(id);
     }
 
-    pub fn with_id(mut self, id: i64) -> Series {
+    pub fn with_id(mut self, id: u64) -> Series {
         self.id = Some(id);
         self
     }
 
-    pub fn id(&self) -> Option<&i64> {
+    pub fn id(&self) -> Option<&u64> {
         self.id.as_ref()
     }
 
@@ -191,16 +191,16 @@ impl Series {
         self.imdb_id = None;
     }
 
-    pub fn set_last_updated(&mut self, last_updated: i64) {
+    pub fn set_last_updated(&mut self, last_updated: u64) {
         self.last_updated = Some(last_updated);
     }
 
-    pub fn with_last_updated(mut self, last_updated: i64) -> Series {
+    pub fn with_last_updated(mut self, last_updated: u64) -> Series {
         self.last_updated = Some(last_updated);
         self
     }
 
-    pub fn last_updated(&self) -> Option<&i64> {
+    pub fn last_updated(&self) -> Option<&u64> {
         self.last_updated.as_ref()
     }
 
@@ -344,16 +344,16 @@ impl Series {
         self.site_rating = None;
     }
 
-    pub fn set_site_rating_count(&mut self, site_rating_count: i64) {
+    pub fn set_site_rating_count(&mut self, site_rating_count: u64) {
         self.site_rating_count = Some(site_rating_count);
     }
 
-    pub fn with_site_rating_count(mut self, site_rating_count: i64) -> Series {
+    pub fn with_site_rating_count(mut self, site_rating_count: u64) -> Series {
         self.site_rating_count = Some(site_rating_count);
         self
     }
 
-    pub fn site_rating_count(&self) -> Option<&i64> {
+    pub fn site_rating_count(&self) -> Option<&u64> {
         self.site_rating_count.as_ref()
     }
 

@@ -2,12 +2,12 @@ use std::fmt::{Display, Formatter, Result};
 
 #[derive(Debug)]
 pub struct UpdateDataQueryParams {
-    from_time: i64,
-    to_time: Option<i64>,
+    from_time: u64,
+    to_time: Option<u64>,
 }
 
 impl UpdateDataQueryParams {
-    pub fn new(from_time: i64, to_time: Option<i64>) -> Self {
+    pub fn new(from_time: u64, to_time: Option<u64>) -> Self {
         // TODO: Implement bounds check on to_time such that it
         // is no more than 7 days after from_time as specified
         // in the API spec and then return a Result<Self, Error>

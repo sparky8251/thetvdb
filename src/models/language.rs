@@ -5,7 +5,7 @@ pub struct Language {
     abbreviation: Option<String>,
     #[serde(rename = "englishName")]
     english_name: Option<String>,
-    id: Option<i64>,
+    id: Option<u64>,
     name: Option<String>,
 }
 
@@ -44,16 +44,16 @@ impl Language {
         self.english_name = None;
     }
 
-    pub fn set_id(&mut self, id: i64) {
+    pub fn set_id(&mut self, id: u64) {
         self.id = Some(id);
     }
 
-    pub fn with_id(mut self, id: i64) -> Language {
+    pub fn with_id(mut self, id: u64) -> Language {
         self.id = Some(id);
         self
     }
 
-    pub fn id(&self) -> Option<&i64> {
+    pub fn id(&self) -> Option<&u64> {
         self.id.as_ref()
     }
 

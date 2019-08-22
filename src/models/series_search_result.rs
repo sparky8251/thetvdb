@@ -6,7 +6,7 @@ pub struct SeriesSearchResult {
     banner: Option<String>,
     #[serde(rename = "firstAired")]
     first_aired: Option<String>,
-    id: Option<i64>,
+    id: Option<u64>,
     network: Option<String>,
     overview: Option<String>,
     #[serde(rename = "seriesName")]
@@ -67,16 +67,16 @@ impl SeriesSearchResult {
         self.first_aired = None;
     }
 
-    pub fn set_id(&mut self, id: i64) {
+    pub fn set_id(&mut self, id: u64) {
         self.id = Some(id);
     }
 
-    pub fn with_id(mut self, id: i64) -> SeriesSearchResult {
+    pub fn with_id(mut self, id: u64) -> SeriesSearchResult {
         self.id = Some(id);
         self
     }
 
-    pub fn id(&self) -> Option<&i64> {
+    pub fn id(&self) -> Option<&u64> {
         self.id.as_ref()
     }
 

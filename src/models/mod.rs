@@ -36,6 +36,8 @@ mod series_data;
 pub use self::series_data::SeriesData;
 mod series_episodes;
 pub use self::series_episodes::SeriesEpisodes;
+mod series_id_episodes_query_params;
+pub use self::series_id_episodes_query_params::SeriesIdEpisodesQueryParams;
 mod series_episodes_query;
 pub use self::series_episodes_query::SeriesEpisodesQuery;
 mod series_episodes_query_params;

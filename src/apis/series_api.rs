@@ -20,56 +20,56 @@ impl<C: hyper::client::connect::Connect> SeriesApiClient<C> {
 pub trait SeriesApi {
     fn series_id_actors_get(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::SeriesActors, Error = Error<serde_json::Value>>>;
     fn series_id_episodes_get(
         &self,
-        id: i64,
-        page: Option<i64>,
+        id: u64,
+        page: Option<u64>,
     ) -> Box<dyn Future<Item = crate::models::SeriesEpisodes, Error = Error<serde_json::Value>>>;
     #[allow(clippy::too_many_arguments)]
     fn series_id_episodes_query_get(
         &self,
-        id: i64,
+        id: u64,
         absolute_number: &str,
         aired_season: &str,
         aired_episode: &str,
         dvd_season: &str,
         dvd_episode: &str,
         imdb_id: &str,
-        page: Option<i64>,
+        page: Option<u64>,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::SeriesEpisodesQuery, Error = Error<serde_json::Value>>>;
     // fn series_id_episodes_summary_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     // ) -> Box<
     //     dyn Future<Item = crate::models::SeriesEpisodesSummary, Error = Error<serde_json::Value>>,
     // >;
     // fn series_id_filter_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     keys: &str,
     //     accept_language: &str,
     // ) -> Box<dyn Future<Item = crate::models::SeriesData, Error = Error<serde_json::Value>>>;
     fn series_id_get(
         &self,
-        id: i64,
+        id: u64,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::SeriesData, Error = Error<serde_json::Value>>>;
     // fn series_id_head(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     accept_language: &str,
     // ) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
     // fn series_id_images_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     accept_language: &str,
     // ) -> Box<dyn Future<Item = crate::models::SeriesImagesCounts, Error = Error<serde_json::Value>>>;
     // fn series_id_images_query_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     key_type: &str,
     //     resolution: &str,
     //     sub_key: &str,
@@ -82,7 +82,7 @@ pub trait SeriesApi {
 impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient<C> {
     fn series_id_actors_get(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::SeriesActors, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
@@ -133,8 +133,8 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
 
     fn series_id_episodes_get(
         &self,
-        id: i64,
-        page: Option<i64>,
+        id: u64,
+        page: Option<u64>,
     ) -> Box<dyn Future<Item = crate::models::SeriesEpisodes, Error = Error<serde_json::Value>>>
     {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
@@ -148,7 +148,7 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
 
         let page = match page {
             Some(v) => format!("?page={}", v),
-            None => format!(""),
+            None => "".to_string(),
         };
 
         let req = Request::get(format!(
@@ -194,14 +194,14 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
 
     fn series_id_episodes_query_get(
         &self,
-        id: i64,
+        id: u64,
         _absolute_number: &str,
         _aired_season: &str,
         _aired_episode: &str,
         _dvd_season: &str,
         _dvd_episode: &str,
         _imdb_id: &str,
-        _page: Option<i64>,
+        _page: Option<u64>,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::SeriesEpisodesQuery, Error = Error<serde_json::Value>>>
     {
@@ -258,7 +258,7 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
 
     // fn series_id_episodes_summary_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     // ) -> Box<
     //     dyn Future<Item = crate::models::SeriesEpisodesSummary, Error = Error<serde_json::Value>>,
     // > {
@@ -336,7 +336,7 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
 
     fn series_id_get(
         &self,
-        id: i64,
+        id: u64,
         accept_language: &str,
     ) -> Box<dyn Future<Item = crate::models::SeriesData, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
@@ -389,7 +389,7 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
 
     // fn series_id_head(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     accept_language: &str,
     // ) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>> {
     //     let configuration: &configuration::Configuration<C> = self.configuration.borrow();
@@ -467,7 +467,7 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
     //
     // fn series_id_images_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     accept_language: &str,
     // ) -> Box<dyn Future<Item = crate::models::SeriesImagesCounts, Error = Error<serde_json::Value>>>
     // {
@@ -550,7 +550,7 @@ impl<C: 'static + hyper::client::connect::Connect> SeriesApi for SeriesApiClient
     //
     // fn series_id_images_query_get(
     //     &self,
-    //     id: i64,
+    //     id: u64,
     //     key_type: &str,
     //     resolution: &str,
     //     sub_key: &str,

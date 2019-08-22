@@ -2,24 +2,24 @@ use serde::{self, Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct UserRatings {
-    rating: Option<i64>,
+    rating: Option<u64>,
     #[serde(rename = "ratingItemId")]
-    rating_item_id: Option<i64>,
+    rating_item_id: Option<u64>,
     #[serde(rename = "ratingType")]
     rating_type: Option<String>,
 }
 
 impl UserRatings {
-    pub fn set_rating(&mut self, rating: i64) {
+    pub fn set_rating(&mut self, rating: u64) {
         self.rating = Some(rating);
     }
 
-    pub fn with_rating(mut self, rating: i64) -> UserRatings {
+    pub fn with_rating(mut self, rating: u64) -> UserRatings {
         self.rating = Some(rating);
         self
     }
 
-    pub fn rating(&self) -> Option<&i64> {
+    pub fn rating(&self) -> Option<&u64> {
         self.rating.as_ref()
     }
 
@@ -27,16 +27,16 @@ impl UserRatings {
         self.rating = None;
     }
 
-    pub fn set_rating_item_id(&mut self, rating_item_id: i64) {
+    pub fn set_rating_item_id(&mut self, rating_item_id: u64) {
         self.rating_item_id = Some(rating_item_id);
     }
 
-    pub fn with_rating_item_id(mut self, rating_item_id: i64) -> UserRatings {
+    pub fn with_rating_item_id(mut self, rating_item_id: u64) -> UserRatings {
         self.rating_item_id = Some(rating_item_id);
         self
     }
 
-    pub fn rating_item_id(&self) -> Option<&i64> {
+    pub fn rating_item_id(&self) -> Option<&u64> {
         self.rating_item_id.as_ref()
     }
 

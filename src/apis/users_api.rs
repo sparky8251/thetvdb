@@ -27,11 +27,11 @@ pub trait UsersApi {
     ) -> Box<dyn Future<Item = crate::models::UserFavoritesData, Error = Error<serde_json::Value>>>;
     fn user_favorites_id_delete(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::UserFavoritesData, Error = Error<serde_json::Value>>>;
     fn user_favorites_id_put(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::UserFavoritesData, Error = Error<serde_json::Value>>>;
     fn user_get(
         &self,
@@ -42,7 +42,7 @@ pub trait UsersApi {
     fn user_ratings_item_type_item_id_delete(
         &self,
         item_type: &str,
-        item_id: i64,
+        item_id: u64,
     ) -> Box<
         dyn Future<
             Item = crate::models::UserRatingsDataNoLinksEmptyArray,
@@ -52,8 +52,8 @@ pub trait UsersApi {
     fn user_ratings_item_type_item_id_item_rating_put(
         &self,
         item_type: &str,
-        item_id: i64,
-        item_rating: i64,
+        item_id: u64,
+        item_rating: u64,
     ) -> Box<
         dyn Future<Item = crate::models::UserRatingsDataNoLinks, Error = Error<serde_json::Value>>,
     >;
@@ -145,7 +145,7 @@ impl<C: hyper::client::connect::Connect> UsersApi for UsersApiClient<C> {
 
     fn user_favorites_id_delete(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::UserFavoritesData, Error = Error<serde_json::Value>>>
     {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
@@ -222,7 +222,7 @@ impl<C: hyper::client::connect::Connect> UsersApi for UsersApiClient<C> {
 
     fn user_favorites_id_put(
         &self,
-        id: i64,
+        id: u64,
     ) -> Box<dyn Future<Item = crate::models::UserFavoritesData, Error = Error<serde_json::Value>>>
     {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
@@ -440,7 +440,7 @@ impl<C: hyper::client::connect::Connect> UsersApi for UsersApiClient<C> {
     fn user_ratings_item_type_item_id_delete(
         &self,
         item_type: &str,
-        item_id: i64,
+        item_id: u64,
     ) -> Box<
         dyn Future<
             Item = crate::models::UserRatingsDataNoLinksEmptyArray,
@@ -523,8 +523,8 @@ impl<C: hyper::client::connect::Connect> UsersApi for UsersApiClient<C> {
     fn user_ratings_item_type_item_id_item_rating_put(
         &self,
         item_type: &str,
-        item_id: i64,
-        item_rating: i64,
+        item_id: u64,
+        item_rating: u64,
     ) -> Box<
         dyn Future<Item = crate::models::UserRatingsDataNoLinks, Error = Error<serde_json::Value>>,
     > {

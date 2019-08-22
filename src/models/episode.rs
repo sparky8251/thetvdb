@@ -3,17 +3,17 @@ use serde::{self, Deserialize, Serialize};
 #[derive(Debug, Default, Serialize, Deserialize)]
 pub struct Episode {
     #[serde(rename = "absoluteNumber")]
-    absolute_number: Option<i64>,
+    absolute_number: Option<u64>,
     #[serde(rename = "airedEpisodeNumber")]
-    aired_episode_number: Option<i64>,
+    aired_episode_number: Option<u64>,
     #[serde(rename = "airedSeason")]
-    aired_season: Option<i64>,
+    aired_season: Option<u64>,
     #[serde(rename = "airsAfterSeason")]
-    airs_after_season: Option<i64>,
+    airs_after_season: Option<u64>,
     #[serde(rename = "airsBeforeEpisode")]
-    airs_before_episode: Option<i64>,
+    airs_before_episode: Option<u64>,
     #[serde(rename = "airsBeforeSeason")]
-    airs_before_season: Option<i64>,
+    airs_before_season: Option<u64>,
     director: Option<String>,
     directors: Option<Vec<String>>,
     #[serde(rename = "dvdChapter")]
@@ -23,7 +23,7 @@ pub struct Episode {
     #[serde(rename = "dvdEpisodeNumber")]
     dvd_episode_number: Option<f64>,
     #[serde(rename = "dvdSeason")]
-    dvd_season: Option<i64>,
+    dvd_season: Option<u64>,
     #[serde(rename = "episodeName")]
     episode_name: Option<String>,
     filename: Option<String>,
@@ -31,28 +31,28 @@ pub struct Episode {
     first_aired: Option<String>,
     #[serde(rename = "guestStars")]
     guest_stars: Option<Vec<String>>,
-    id: Option<i64>,
+    id: Option<u64>,
     #[serde(rename = "imdbId")]
     imdb_id: Option<String>,
     #[serde(rename = "lastUpdated")]
-    last_updated: Option<i64>,
+    last_updated: Option<u64>,
     #[serde(rename = "lastUpdatedBy")]
-    last_updated_by: Option<i64>,
+    last_updated_by: Option<u64>,
     overview: Option<String>,
     #[serde(rename = "productionCode")]
     production_code: Option<String>,
     #[serde(rename = "seriesId")]
-    series_id: Option<i64>,
+    series_id: Option<u64>,
     #[serde(rename = "showUrl")]
     show_url: Option<String>,
     #[serde(rename = "siteRating")]
     site_rating: Option<f64>,
     #[serde(rename = "siteRatingCount")]
-    site_rating_count: Option<i64>,
+    site_rating_count: Option<u64>,
     #[serde(rename = "thumbAdded")]
     thumb_added: Option<String>,
     #[serde(rename = "thumbAuthor")]
-    thumb_author: Option<i64>,
+    thumb_author: Option<u64>,
     #[serde(rename = "thumbHeight")]
     thumb_height: Option<String>,
     #[serde(rename = "thumbWidth")]
@@ -61,16 +61,16 @@ pub struct Episode {
 }
 
 impl Episode {
-    pub fn set_absolute_number(&mut self, absolute_number: i64) {
+    pub fn set_absolute_number(&mut self, absolute_number: u64) {
         self.absolute_number = Some(absolute_number);
     }
 
-    pub fn with_absolute_number(mut self, absolute_number: i64) -> Episode {
+    pub fn with_absolute_number(mut self, absolute_number: u64) -> Episode {
         self.absolute_number = Some(absolute_number);
         self
     }
 
-    pub fn absolute_number(&self) -> Option<&i64> {
+    pub fn absolute_number(&self) -> Option<&u64> {
         self.absolute_number.as_ref()
     }
 
@@ -78,16 +78,16 @@ impl Episode {
         self.absolute_number = None;
     }
 
-    pub fn set_aired_episode_number(&mut self, aired_episode_number: i64) {
+    pub fn set_aired_episode_number(&mut self, aired_episode_number: u64) {
         self.aired_episode_number = Some(aired_episode_number);
     }
 
-    pub fn with_aired_episode_number(mut self, aired_episode_number: i64) -> Episode {
+    pub fn with_aired_episode_number(mut self, aired_episode_number: u64) -> Episode {
         self.aired_episode_number = Some(aired_episode_number);
         self
     }
 
-    pub fn aired_episode_number(&self) -> Option<&i64> {
+    pub fn aired_episode_number(&self) -> Option<&u64> {
         self.aired_episode_number.as_ref()
     }
 
@@ -95,16 +95,16 @@ impl Episode {
         self.aired_episode_number = None;
     }
 
-    pub fn set_aired_season(&mut self, aired_season: i64) {
+    pub fn set_aired_season(&mut self, aired_season: u64) {
         self.aired_season = Some(aired_season);
     }
 
-    pub fn with_aired_season(mut self, aired_season: i64) -> Episode {
+    pub fn with_aired_season(mut self, aired_season: u64) -> Episode {
         self.aired_season = Some(aired_season);
         self
     }
 
-    pub fn aired_season(&self) -> Option<&i64> {
+    pub fn aired_season(&self) -> Option<&u64> {
         self.aired_season.as_ref()
     }
 
@@ -112,16 +112,16 @@ impl Episode {
         self.aired_season = None;
     }
 
-    pub fn set_airs_after_season(&mut self, airs_after_season: i64) {
+    pub fn set_airs_after_season(&mut self, airs_after_season: u64) {
         self.airs_after_season = Some(airs_after_season);
     }
 
-    pub fn with_airs_after_season(mut self, airs_after_season: i64) -> Episode {
+    pub fn with_airs_after_season(mut self, airs_after_season: u64) -> Episode {
         self.airs_after_season = Some(airs_after_season);
         self
     }
 
-    pub fn airs_after_season(&self) -> Option<&i64> {
+    pub fn airs_after_season(&self) -> Option<&u64> {
         self.airs_after_season.as_ref()
     }
 
@@ -129,16 +129,16 @@ impl Episode {
         self.airs_after_season = None;
     }
 
-    pub fn set_airs_before_episode(&mut self, airs_before_episode: i64) {
+    pub fn set_airs_before_episode(&mut self, airs_before_episode: u64) {
         self.airs_before_episode = Some(airs_before_episode);
     }
 
-    pub fn with_airs_before_episode(mut self, airs_before_episode: i64) -> Episode {
+    pub fn with_airs_before_episode(mut self, airs_before_episode: u64) -> Episode {
         self.airs_before_episode = Some(airs_before_episode);
         self
     }
 
-    pub fn airs_before_episode(&self) -> Option<&i64> {
+    pub fn airs_before_episode(&self) -> Option<&u64> {
         self.airs_before_episode.as_ref()
     }
 
@@ -146,16 +146,16 @@ impl Episode {
         self.airs_before_episode = None;
     }
 
-    pub fn set_airs_before_season(&mut self, airs_before_season: i64) {
+    pub fn set_airs_before_season(&mut self, airs_before_season: u64) {
         self.airs_before_season = Some(airs_before_season);
     }
 
-    pub fn with_airs_before_season(mut self, airs_before_season: i64) -> Episode {
+    pub fn with_airs_before_season(mut self, airs_before_season: u64) -> Episode {
         self.airs_before_season = Some(airs_before_season);
         self
     }
 
-    pub fn airs_before_season(&self) -> Option<&i64> {
+    pub fn airs_before_season(&self) -> Option<&u64> {
         self.airs_before_season.as_ref()
     }
 
@@ -248,16 +248,16 @@ impl Episode {
         self.dvd_episode_number = None;
     }
 
-    pub fn set_dvd_season(&mut self, dvd_season: i64) {
+    pub fn set_dvd_season(&mut self, dvd_season: u64) {
         self.dvd_season = Some(dvd_season);
     }
 
-    pub fn with_dvd_season(mut self, dvd_season: i64) -> Episode {
+    pub fn with_dvd_season(mut self, dvd_season: u64) -> Episode {
         self.dvd_season = Some(dvd_season);
         self
     }
 
-    pub fn dvd_season(&self) -> Option<&i64> {
+    pub fn dvd_season(&self) -> Option<&u64> {
         self.dvd_season.as_ref()
     }
 
@@ -333,16 +333,16 @@ impl Episode {
         self.guest_stars = None;
     }
 
-    pub fn set_id(&mut self, id: i64) {
+    pub fn set_id(&mut self, id: u64) {
         self.id = Some(id);
     }
 
-    pub fn with_id(mut self, id: i64) -> Episode {
+    pub fn with_id(mut self, id: u64) -> Episode {
         self.id = Some(id);
         self
     }
 
-    pub fn id(&self) -> Option<&i64> {
+    pub fn id(&self) -> Option<&u64> {
         self.id.as_ref()
     }
 
@@ -367,16 +367,16 @@ impl Episode {
         self.imdb_id = None;
     }
 
-    pub fn set_last_updated(&mut self, last_updated: i64) {
+    pub fn set_last_updated(&mut self, last_updated: u64) {
         self.last_updated = Some(last_updated);
     }
 
-    pub fn with_last_updated(mut self, last_updated: i64) -> Episode {
+    pub fn with_last_updated(mut self, last_updated: u64) -> Episode {
         self.last_updated = Some(last_updated);
         self
     }
 
-    pub fn last_updated(&self) -> Option<&i64> {
+    pub fn last_updated(&self) -> Option<&u64> {
         self.last_updated.as_ref()
     }
 
@@ -384,16 +384,16 @@ impl Episode {
         self.last_updated = None;
     }
 
-    pub fn set_last_updated_by(&mut self, last_updated_by: i64) {
+    pub fn set_last_updated_by(&mut self, last_updated_by: u64) {
         self.last_updated_by = Some(last_updated_by);
     }
 
-    pub fn with_last_updated_by(mut self, last_updated_by: i64) -> Episode {
+    pub fn with_last_updated_by(mut self, last_updated_by: u64) -> Episode {
         self.last_updated_by = Some(last_updated_by);
         self
     }
 
-    pub fn last_updated_by(&self) -> Option<i64> {
+    pub fn last_updated_by(&self) -> Option<u64> {
         self.last_updated_by
     }
 
@@ -435,16 +435,16 @@ impl Episode {
         self.production_code = None;
     }
 
-    pub fn set_series_id(&mut self, series_id: i64) {
+    pub fn set_series_id(&mut self, series_id: u64) {
         self.series_id = Some(series_id);
     }
 
-    pub fn with_series_id(mut self, series_id: i64) -> Episode {
+    pub fn with_series_id(mut self, series_id: u64) -> Episode {
         self.series_id = Some(series_id);
         self
     }
 
-    pub fn series_id(&self) -> Option<i64> {
+    pub fn series_id(&self) -> Option<u64> {
         self.series_id
     }
 
@@ -486,16 +486,16 @@ impl Episode {
         self.site_rating = None;
     }
 
-    pub fn set_site_rating_count(&mut self, site_rating_count: i64) {
+    pub fn set_site_rating_count(&mut self, site_rating_count: u64) {
         self.site_rating_count = Some(site_rating_count);
     }
 
-    pub fn with_site_rating_count(mut self, site_rating_count: i64) -> Episode {
+    pub fn with_site_rating_count(mut self, site_rating_count: u64) -> Episode {
         self.site_rating_count = Some(site_rating_count);
         self
     }
 
-    pub fn site_rating_count(&self) -> Option<&i64> {
+    pub fn site_rating_count(&self) -> Option<&u64> {
         self.site_rating_count.as_ref()
     }
 
@@ -520,16 +520,16 @@ impl Episode {
         self.thumb_added = None;
     }
 
-    pub fn set_thumb_author(&mut self, thumb_author: i64) {
+    pub fn set_thumb_author(&mut self, thumb_author: u64) {
         self.thumb_author = Some(thumb_author);
     }
 
-    pub fn with_thumb_author(mut self, thumb_author: i64) -> Episode {
+    pub fn with_thumb_author(mut self, thumb_author: u64) -> Episode {
         self.thumb_author = Some(thumb_author);
         self
     }
 
-    pub fn thumb_author(&self) -> Option<&i64> {
+    pub fn thumb_author(&self) -> Option<&u64> {
         self.thumb_author.as_ref()
     }
 
