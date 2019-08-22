@@ -1,7 +1,8 @@
 use std::rc::Rc;
 
-use super::configuration::Configuration;
 use hyper;
+
+use super::configuration::Configuration;
 
 pub struct APIClient<C: hyper::client::connect::Connect> {
     #[allow(dead_code)]

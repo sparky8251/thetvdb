@@ -19,7 +19,7 @@ fn login() {
     let token = apiclient.authentication_api().login_post(apikey);
 
     match token.wait() {
-        Ok(v) => v,
+        Ok(_) => (),
         Err(e) => panic!("{:?}", e),
     };
 }
