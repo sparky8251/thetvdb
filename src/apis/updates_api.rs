@@ -33,12 +33,8 @@ impl<C: 'static + hyper::client::connect::Connect> UpdatesApi for UpdatesApiClie
     ) -> Box<dyn Future<Item = crate::models::UpdateData, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
-        let authorization = match &configuration.token {
-            Some(v) => {
-                let p = v.prefix.clone();
-                let t = v.token.clone();
-                format!("{} {}", p, t)
-            }
+        let authorization = match configuration.token.clone() {
+            Some(v) => v,
             None => {
                 panic!("You need to provide an authorization token before making this API call")
             }
@@ -53,7 +49,7 @@ impl<C: 'static + hyper::client::connect::Connect> UpdatesApi for UpdatesApiClie
             configuration.user_agent.as_ref().unwrap(),
         )
         .header(hyper::header::ACCEPT, "application/json")
-        .header(hyper::header::AUTHORIZATION, authorization)
+        .header(hyper::header::AUTHORIZATION, authorization.to_string())
         .header("Accept-Language", accept_language)
         .body(Body::empty())
         .expect("request builder");

@@ -42,7 +42,6 @@ fn refresh_token() {
 
     let token = match token.wait() {
         Ok(v) => thetvdb::apis::configuration::ApiToken {
-            prefix: "Bearer".to_string(),
             token: v.token().unwrap().to_string(),
         },
         Err(e) => panic!("{:?}", e),

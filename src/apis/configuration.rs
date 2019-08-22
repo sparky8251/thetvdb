@@ -1,3 +1,5 @@
+use std::fmt::{Display, Formatter, Result};
+
 use hyper;
 
 pub struct Configuration<C: hyper::client::connect::Connect> {
@@ -7,10 +9,15 @@ pub struct Configuration<C: hyper::client::connect::Connect> {
     pub token: Option<ApiToken>,
 }
 
+#[derive(Clone)]
 pub struct ApiToken {
-    // TODO: Default prefix to 'Bearer' for ergonomics
-    pub prefix: String,
     pub token: String,
+}
+
+impl Display for ApiToken {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        write!(f, "Bearer {}", self.token)
+    }
 }
 
 impl<C: hyper::client::connect::Connect> Configuration<C> {

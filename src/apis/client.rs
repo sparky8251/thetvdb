@@ -10,7 +10,7 @@ pub struct APIClient<C: hyper::client::connect::Connect> {
     episodes_api: Box<dyn crate::apis::EpisodesApi>,
     languages_api: Box<dyn crate::apis::LanguagesApi>,
     search_api: Box<dyn crate::apis::SearchApi>,
-    // series_api: Box<dyn crate::apis::SeriesApi>,
+    series_api: Box<dyn crate::apis::SeriesApi>,
     updates_api: Box<dyn crate::apis::UpdatesApi>,
     // users_api: Box<dyn crate::apis::UsersApi>,
 }
@@ -25,7 +25,7 @@ impl<C: 'static + hyper::client::connect::Connect> APIClient<C> {
             episodes_api: Box::new(crate::apis::EpisodesApiClient::new(rc.clone())),
             languages_api: Box::new(crate::apis::LanguagesApiClient::new(rc.clone())),
             search_api: Box::new(crate::apis::SearchApiClient::new(rc.clone())),
-            // series_api: Box::new(crate::apis::SeriesApiClient::new(rc.clone())),
+            series_api: Box::new(crate::apis::SeriesApiClient::new(rc.clone())),
             updates_api: Box::new(crate::apis::UpdatesApiClient::new(rc.clone())),
             // users_api: Box::new(crate::apis::UsersApiClient::new(rc.clone())),
         }
@@ -47,10 +47,10 @@ impl<C: 'static + hyper::client::connect::Connect> APIClient<C> {
         self.search_api.as_ref()
     }
 
-    // pub fn series_api(&self) -> &dyn crate::apis::SeriesApi {
-    //     self.series_api.as_ref()
-    // }
-    //
+    pub fn series_api(&self) -> &dyn crate::apis::SeriesApi {
+        self.series_api.as_ref()
+    }
+
     pub fn updates_api(&self) -> &dyn crate::apis::UpdatesApi {
         self.updates_api.as_ref()
     }
