@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-// #![deny(warnings)]
+#![deny(warnings)]
 // #![deny(missing_docs)]
 #![warn(clippy::all)]
 
